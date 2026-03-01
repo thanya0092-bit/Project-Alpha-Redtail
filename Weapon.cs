@@ -1,15 +1,13 @@
-﻿public class Player
+﻿public class Weapon
 {
-    public int CurrentHitPoints { get; set; }
-    public int MaximumHitPoints { get; set; }
-    public int ExperiencePoints { get; set; }
-    public Weapon CurrentWeapon { get; set; }
+    public int ID;
+    public string Name;
+    public int MaximumDamage;
 
-    public Player(int maximumHitPoints, Weapon startingWeapon)
+    public Weapon(int id, string name, int maximumDamage)
     {
-        MaximumHitPoints = maximumHitPoints;
-        CurrentHitPoints = maximumHitPoints;
-        ExperiencePoints = 0;
-        CurrentWeapon = startingWeapon;
+        ID = id;
+        Name = name;
+        MaximumDamage = maximumDamage;
     }
 }
