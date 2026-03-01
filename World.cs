@@ -28,6 +28,8 @@ public static class World
     public const int LOCATION_ID_BRIDGE = 8;
     public const int LOCATION_ID_SPIDER_FIELD = 9;
 
+    public static Location CurrentLocation = home;
+
     static World()
     {
         PopulateWeapons();
@@ -151,6 +153,19 @@ public static class World
         Locations.Add(farmersField);
         Locations.Add(bridge);
         Locations.Add(spiderField);
+    }
+
+    public static void TryToMoveTo(location newLocation)
+    {
+        if (newLocation == null)
+        {
+            return false;
+        }
+        else
+        {
+            CurrentLocation = newLocation;
+            return true;
+        }
     }
 
     public static Location LocationByID(int id)
