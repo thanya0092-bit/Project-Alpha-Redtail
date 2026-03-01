@@ -4,9 +4,9 @@ public class Monster
     public int ID;
     public string Name;
     public int MaximumDamage;
-    public int RewardExperiencePoints { get; set; }
-    public int MaximumHitPoints { get; set; }
-    public int CurrentHitPoints { get; set; }
+    public int RewardExperiencePoints;
+    public int MaximumHitPoints;
+    public int CurrentHitPoints;
 
     public Monster(int id, string name, int maximumDamage, int rewardExperiencePoints, int maximumHitPoints)
     {
