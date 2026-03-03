@@ -27,7 +27,7 @@ public static class World
     public const int LOCATION_ID_BRIDGE = 8;
     public const int LOCATION_ID_SPIDER_FIELD = 9;
 
-    public static Location CurrentLocation = home;
+    public static Location CurrentLocation;
 
     static World()
     {
@@ -116,6 +116,8 @@ public static class World
         Location spiderField = new Location(LOCATION_ID_SPIDER_FIELD, "Forest", "You see spider webs covering covering the trees in this forest.", null, null);
         spiderField.MonsterLivingHere = MonsterByID(MONSTER_ID_GIANT_SPIDER);
 
+        CurrentLocation = home;
+
         // Link the locations together
         home.LocationToNorth = townSquare;
 
@@ -154,7 +156,7 @@ public static class World
         Locations.Add(spiderField);
     }
 
-    public static void TryToMoveTo(Location newLocation)
+    public static bool TryToMoveTo(Location newLocation)
     {
         if (newLocation == null)
         {
