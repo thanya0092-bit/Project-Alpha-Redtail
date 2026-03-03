@@ -1,4 +1,3 @@
-﻿
 public class Monster
 {
     public int ID;

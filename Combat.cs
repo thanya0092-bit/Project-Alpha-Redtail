@@ -1,4 +1,4 @@
-﻿public static class Combat
+public static class Combat
 {
     public static void AttackMonster(Player player, Monster monster)
     {

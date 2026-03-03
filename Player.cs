@@ -1,4 +1,4 @@
-﻿public class Player
+public class Player
 {
     public int CurrentHitPoints;
     public int MaximumHitPoints;
