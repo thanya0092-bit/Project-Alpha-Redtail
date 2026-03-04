@@ -1,6 +1,5 @@
 public static class World
 {
-
     public static readonly List<Weapon> Weapons = new List<Weapon>();
     public static readonly List<Monster> Monsters = new List<Monster>();
     public static readonly List<Quest> Quests = new List<Quest>();
@@ -27,6 +26,8 @@ public static class World
     public const int LOCATION_ID_FARM_FIELD = 7;
     public const int LOCATION_ID_BRIDGE = 8;
     public const int LOCATION_ID_SPIDER_FIELD = 9;
+
+    public static Location CurrentLocation;
 
     static World()
     {
@@ -115,6 +116,8 @@ public static class World
         Location spiderField = new Location(LOCATION_ID_SPIDER_FIELD, "Forest", "You see spider webs covering covering the trees in this forest.", null, null);
         spiderField.MonsterLivingHere = MonsterByID(MONSTER_ID_GIANT_SPIDER);
 
+        CurrentLocation = home;
+
         // Link the locations together
         home.LocationToNorth = townSquare;
 
@@ -151,6 +154,19 @@ public static class World
         Locations.Add(farmersField);
         Locations.Add(bridge);
         Locations.Add(spiderField);
+    }
+
+    public static bool TryToMoveTo(Location newLocation)
+    {
+        if (newLocation == null)
+        {
+            return false;
+        }
+        else
+        {
+            CurrentLocation = newLocation;
+            return true;
+        }
     }
 
     public static Location LocationByID(int id)

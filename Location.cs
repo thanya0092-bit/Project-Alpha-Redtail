@@ -3,8 +3,8 @@ public class Location
     public int ID;
     public string Name;
     public string Description;
-    public Quest QuestAvailableHere;
-    public Monster MonsterLivingHere;
+    public Quest QuestAvailableHere = null;
+    public Monster MonsterLivingHere = null;
 
     public Location LocationToNorth = null;
     public Location LocationToSouth = null;
@@ -55,4 +55,50 @@ public class Location
         "W" => LocationToWest,
         _ => null
     };
+    
+    public static void ShowMap()
+    {
+        Console.WriteLine("\n========= WORLD MAP =========\n");
+
+        void Print(string name)
+        {
+            if (World.CurrentLocation.Name == name)
+                Console.Write($"[>{name}<]");
+            else
+                Console.Write($"[{name}]");
+        }
+
+        Console.Write("                                  ");
+        Print("Alchemist's garden");
+        Console.WriteLine();
+
+        Console.WriteLine("                                        |");
+
+        Console.Write("                                  ");
+        Print("Alchemist's hut");
+        Console.WriteLine();
+
+        Console.WriteLine("                                        |");
+
+        Print("Farmer's field");
+        Console.Write(" -- ");
+        Print("Farmhouse");
+        Console.Write(" -- ");
+        Print("Town square");
+        Console.Write(" -- ");
+        Print("Guard post");
+        Console.Write(" -- ");
+        Print("Bridge");
+        Console.Write(" -- ");
+        Print("Forest");
+        Console.WriteLine();
+
+        Console.WriteLine("                                        |");
+
+        Console.Write("                                    ");
+        Print("Home");
+        Console.WriteLine();
+
+        Console.WriteLine("\n*Your location marked with [>name<]");
+    }
 }
