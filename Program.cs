@@ -1,4 +1,6 @@
-﻿class Program
+﻿using Microsoft.VisualBasic;
+
+class Program
 {
     static Player player = new Player(
         20,
@@ -111,7 +113,6 @@
                 Console.WriteLine("There are no more monsters here.");
                 return;
             }
-
             while (true)
             {
                 Console.WriteLine($"A {monster.Name} is here!");
@@ -158,7 +159,6 @@
                                 break;
                             }
                         }
-
                         Console.WriteLine("Fight another monster? (Y/N)");
                         string again = Console.ReadLine()!.ToUpper();
 
@@ -179,6 +179,11 @@
                     Console.WriteLine("You avoid the fight.");
                     break;
                 }
+            }
+            if (player.RatsKilled >= 3)
+            {
+                World.QuestByID(World.QUEST_ID_CLEAR_ALCHEMIST_GARDEN).CompleteQuest();
+                Rewards.give_reward(World.QUEST_ID_CLEAR_ALCHEMIST_GARDEN, player);
             }
         }
     }

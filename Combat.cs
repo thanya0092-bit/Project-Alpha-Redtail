@@ -10,8 +10,6 @@
         if (monster.CurrentHitPoints <= 0)
         {
             Console.WriteLine($"You defeated the {monster.Name}!");
-            player.ExperiencePoints += monster.RewardExperiencePoints;
-            Console.WriteLine($"You gain {monster.RewardExperiencePoints} XP.");
         }
         else
         {
