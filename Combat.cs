@@ -1,4 +1,4 @@
-public static class Combat
+﻿public static class Combat
 {
     public static void AttackMonster(Player player, Monster monster)
     {
@@ -10,8 +10,6 @@ public static class Combat
         if (monster.CurrentHitPoints <= 0)
         {
             Console.WriteLine($"You defeated the {monster.Name}!");
-            player.ExperiencePoints += monster.RewardExperiencePoints;
-            Console.WriteLine($"You gain {monster.RewardExperiencePoints} XP.");
         }
         else
         {
@@ -29,6 +27,22 @@ public static class Combat
         if (player.CurrentHitPoints <= 0)
         {
             Console.WriteLine("You died...");
+        }
+    }
+
+    public static void StartFight(Player player, Monster monster)
+    {
+        Console.WriteLine($"\n⚔ Combat started with {monster.Name}!");
+
+        while (player.CurrentHitPoints > 0 && monster.CurrentHitPoints > 0)
+        {
+            Console.WriteLine("\nPress ENTER to attack...");
+            Console.ReadLine();
+
+            AttackMonster(player, monster);
+
+            Console.WriteLine($"Your HP: {player.CurrentHitPoints}");
+            Console.WriteLine($"{monster.Name} HP: {monster.CurrentHitPoints}");
         }
     }
 }
