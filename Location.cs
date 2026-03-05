@@ -22,7 +22,7 @@ public class Location
 
     public string Compass()
     {
-        string directions = "From here you can go:\n";
+        string directions = "";
         if (LocationToNorth != null)
         {
             directions += "    N\n    |\n";
