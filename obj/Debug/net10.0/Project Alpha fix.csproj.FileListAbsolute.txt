@@ -1,0 +1,15 @@
+/Users/akashramlal/school/OODP/Project-Alpha-Redtail/bin/Debug/net10.0/Project Alpha fix
+/Users/akashramlal/school/OODP/Project-Alpha-Redtail/bin/Debug/net10.0/Project Alpha fix.deps.json
+/Users/akashramlal/school/OODP/Project-Alpha-Redtail/bin/Debug/net10.0/Project Alpha fix.runtimeconfig.json
+/Users/akashramlal/school/OODP/Project-Alpha-Redtail/bin/Debug/net10.0/Project Alpha fix.dll
+/Users/akashramlal/school/OODP/Project-Alpha-Redtail/bin/Debug/net10.0/Project Alpha fix.pdb
+/Users/akashramlal/school/OODP/Project-Alpha-Redtail/obj/Debug/net10.0/Project Alpha fix.GeneratedMSBuildEditorConfig.editorconfig
+/Users/akashramlal/school/OODP/Project-Alpha-Redtail/obj/Debug/net10.0/Project Alpha fix.AssemblyInfoInputs.cache
+/Users/akashramlal/school/OODP/Project-Alpha-Redtail/obj/Debug/net10.0/Project Alpha fix.AssemblyInfo.cs
+/Users/akashramlal/school/OODP/Project-Alpha-Redtail/obj/Debug/net10.0/Project Alpha fix.csproj.CoreCompileInputs.cache
+/Users/akashramlal/school/OODP/Project-Alpha-Redtail/obj/Debug/net10.0/Project Alpha fix.sourcelink.json
+/Users/akashramlal/school/OODP/Project-Alpha-Redtail/obj/Debug/net10.0/Project Alpha fix.dll
+/Users/akashramlal/school/OODP/Project-Alpha-Redtail/obj/Debug/net10.0/refint/Project Alpha fix.dll
+/Users/akashramlal/school/OODP/Project-Alpha-Redtail/obj/Debug/net10.0/Project Alpha fix.pdb
+/Users/akashramlal/school/OODP/Project-Alpha-Redtail/obj/Debug/net10.0/Project Alpha fix.genruntimeconfig.cache
+/Users/akashramlal/school/OODP/Project-Alpha-Redtail/obj/Debug/net10.0/ref/Project Alpha fix.dll

@@ -96,7 +96,25 @@ class Program
             Quest quest = World.CurrentLocation.QuestAvailableHere;
             if (!quest.IsStarted)
             {
-                quest.StartQuest();
+
+                Console.WriteLine("Would you like to start the quest? (Y/N)");
+                string questChoice = Console.ReadLine()!.ToUpper();
+                
+                while (questChoice != "Y" && questChoice != "N")
+                {
+                    Console.WriteLine("Would you like to start the quest? (Y/N)");
+                    questChoice = Console.ReadLine()!.ToUpper();
+                }
+
+                if (questChoice == "Y")
+                {
+                    quest.StartQuest();
+                    Console.WriteLine("Quest started!");
+                }
+                else
+                {
+                    return;
+                }
             }
         }
 
