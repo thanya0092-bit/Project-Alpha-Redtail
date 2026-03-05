@@ -2,7 +2,6 @@
 {
     public int CurrentHitPoints;
     public int MaximumHitPoints;
-    public int ExperiencePoints;
     public Weapon CurrentWeapon;
     public List<Weapon> Inventory = new List<Weapon>();
     public int RatsKilled = 0;
@@ -13,7 +12,6 @@
     {
         MaximumHitPoints = maximumHitPoints;
         CurrentHitPoints = maximumHitPoints;
-        ExperiencePoints = 0;
         CurrentWeapon = startingWeapon;
         Inventory.Add(startingWeapon);
     }
@@ -54,7 +52,6 @@
     {
         Console.WriteLine("\n=== Player Status ===");
         Console.WriteLine($"HP: {CurrentHitPoints}/{MaximumHitPoints}");
-        Console.WriteLine($"XP: {ExperiencePoints}");
         Console.WriteLine($"Rats killed: {RatsKilled}/3");
         Console.WriteLine($"Snakes killed: {SnakesKilled}/3");
         Console.WriteLine($"Spiders killed: {SpidersKilled}/3");
