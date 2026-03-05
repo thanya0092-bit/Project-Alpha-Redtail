@@ -55,6 +55,7 @@
         Console.WriteLine("\n=== Player Status ===");
         Console.WriteLine($"HP: {CurrentHitPoints}/{MaximumHitPoints}");
         Console.WriteLine($"XP: {ExperiencePoints}");
+        Console.WriteLine($"Equipped weapon: {CurrentWeapon.Name}");
         Console.WriteLine($"Rats killed: {RatsKilled}/3");
         Console.WriteLine($"Snakes killed: {SnakesKilled}/3");
         Console.WriteLine($"Spiders killed: {SpidersKilled}/3");
