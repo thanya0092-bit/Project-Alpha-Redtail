@@ -23,7 +23,7 @@ public class Quest
     {
         IsStarted = true;
 
-        Console.WriteLine($"quest started: {Name}");
+        Console.WriteLine($"Quest started: {Name}");
         Console.WriteLine(Description);
     }
 
