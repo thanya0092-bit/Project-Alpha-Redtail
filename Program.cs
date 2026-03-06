@@ -140,6 +140,11 @@ class Program
             }
             while (true)
             {
+                if (player.CurrentHitPoints <= 0)
+                {
+                    break;
+                }
+
                 Console.WriteLine($"A {monster.Name} is here!");
                 Console.WriteLine("Do you want to fight? (Y/N)");
 
