@@ -54,8 +54,16 @@ class Program
             }
             if (player.CurrentHitPoints <= 0)
             {
-                Console.WriteLine("You died. Game Over.");
+                Console.WriteLine("\nYou died. Game Over.");
                 break;
+            }
+            else if (World.QuestByID(World.QUEST_ID_CLEAR_ALCHEMIST_GARDEN).IsCompleted &&
+                     World.QuestByID(World.QUEST_ID_CLEAR_FARMERS_FIELD).IsCompleted &&
+                     World.QuestByID(World.QUEST_ID_COLLECT_SPIDER_SILK).IsCompleted &&
+                     World.CurrentLocation == World.LocationByID(9))
+            {
+                Console.WriteLine("\nCongratulations! You completed the game.");
+                isRunning = false;
             }
         }
         Console.WriteLine("Thanks for playing!");
@@ -63,6 +71,7 @@ class Program
 
     static void MovePlayer()
     {
+        Console.WriteLine();
         Console.WriteLine(World.CurrentLocation.Compass());
         Console.WriteLine("Move using N, S, E, W:");
         string input = Console.ReadLine()!.ToUpper();
@@ -71,7 +80,7 @@ class Program
 
         if (newLocation == null)
         {
-            Console.WriteLine("You can't go that way.");
+            Console.WriteLine("\nYou can't go that way.");
             return;
         }
 
@@ -81,7 +90,7 @@ class Program
             if (player.RatsKilled < 3 || player.SnakesKilled < 3)
             {
                 Console.WriteLine("Guard blocks the bridge!");
-                Console.WriteLine("Kill 3 rats and 3 snakes first.");
+                Console.WriteLine("You must complete 2 quests first.");
                 return;
             }
         }
@@ -97,7 +106,7 @@ class Program
             if (!quest.IsStarted)
             {
 
-                Console.WriteLine("Would you like to start the quest? (Y/N)");
+                Console.WriteLine("There is a quest available here, would you like to start it? (Y/N)");
                 string questChoice = Console.ReadLine()!.ToUpper();
                 
                 while (questChoice != "Y" && questChoice != "N")
@@ -109,7 +118,6 @@ class Program
                 if (questChoice == "Y")
                 {
                     quest.StartQuest();
-                    Console.WriteLine("Quest started!");
                 }
                 else
                 {
@@ -133,7 +141,12 @@ class Program
             }
             while (true)
             {
-                Console.WriteLine($"A {monster.Name} is here!");
+                if (player.CurrentHitPoints <= 0)
+                {
+                    break;
+                }
+
+                Console.WriteLine($"\nA {monster.Name} is here!");
                 Console.WriteLine("Do you want to fight? (Y/N)");
 
                 string fightChoice = Console.ReadLine()!.ToUpper();
@@ -144,7 +157,7 @@ class Program
 
                     if (monster.CurrentHitPoints <= 0)
                     {
-                        if (monster.ID == World.MONSTER_ID_RAT)
+                        if (monster.ID == World.MONSTER_ID_RAT && World.QuestByID(World.QUEST_ID_CLEAR_ALCHEMIST_GARDEN).IsStarted)
                         {
                             player.RatsKilled++;
                             Console.WriteLine($"Rats killed: {player.RatsKilled}/3");
@@ -152,10 +165,12 @@ class Program
                             if (player.RatsKilled >= 3)
                             {
                                 Console.WriteLine("There are no more rats here.");
+                                World.QuestByID(World.QUEST_ID_CLEAR_ALCHEMIST_GARDEN).CompleteQuest();
+                                Rewards.give_reward(World.QUEST_ID_CLEAR_ALCHEMIST_GARDEN, player);
                                 break;
                             }
                         }
-                        else if (monster.ID == World.MONSTER_ID_SNAKE)
+                        else if (monster.ID == World.MONSTER_ID_SNAKE && World.QuestByID(World.QUEST_ID_CLEAR_FARMERS_FIELD).IsStarted)
                         {
                             player.SnakesKilled++;
                             Console.WriteLine($"Snakes killed: {player.SnakesKilled}/3");
@@ -163,10 +178,12 @@ class Program
                             if (player.SnakesKilled >= 3)
                             {
                                 Console.WriteLine("There are no more snakes here.");
+                                World.QuestByID(World.QUEST_ID_CLEAR_FARMERS_FIELD).CompleteQuest();
+                                Rewards.give_reward(World.QUEST_ID_CLEAR_FARMERS_FIELD, player);
                                 break;
                             }
                         }
-                        else if (monster.ID == World.MONSTER_ID_GIANT_SPIDER)
+                        else if (monster.ID == World.MONSTER_ID_GIANT_SPIDER && World.QuestByID(World.QUEST_ID_COLLECT_SPIDER_SILK).IsStarted)
                         {
                             player.SpidersKilled++;
                             Console.WriteLine($"Spiders killed: {player.SpidersKilled}/3");
@@ -174,10 +191,11 @@ class Program
                             if (player.SpidersKilled >= 3)
                             {
                                 Console.WriteLine("There are no more spiders here.");
+                                World.QuestByID(World.QUEST_ID_COLLECT_SPIDER_SILK).CompleteQuest();
                                 break;
                             }
                         }
-                        Console.WriteLine("Fight another monster? (Y/N)");
+                        Console.WriteLine("\nFight another monster? (Y/N)");
                         string again = Console.ReadLine()!.ToUpper();
 
                         if (again == "Y")
@@ -188,6 +206,8 @@ class Program
                         }
                         else
                         {
+                            monster = World.MonsterByID(monster.ID);
+                            monster.CurrentHitPoints = monster.MaximumHitPoints;
                             break;
                         }
                     }
@@ -197,11 +217,6 @@ class Program
                     Console.WriteLine("You avoid the fight.");
                     break;
                 }
-            }
-            if (player.RatsKilled >= 3)
-            {
-                World.QuestByID(World.QUEST_ID_CLEAR_ALCHEMIST_GARDEN).CompleteQuest();
-                Rewards.give_reward(World.QUEST_ID_CLEAR_ALCHEMIST_GARDEN, player);
             }
         }
     }
