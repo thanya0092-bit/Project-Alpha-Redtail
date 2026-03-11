@@ -52,8 +52,13 @@
     {
         Console.WriteLine("\n=== Player Status ===");
         Console.WriteLine($"HP: {CurrentHitPoints}/{MaximumHitPoints}");
-        Console.WriteLine($"Rats killed: {RatsKilled}/3");
-        Console.WriteLine($"Snakes killed: {SnakesKilled}/3");
-        Console.WriteLine($"Spiders killed: {SpidersKilled}/3");
+        if (World.QuestByID(World.QUEST_ID_CLEAR_ALCHEMIST_GARDEN).IsStarted)
+            Console.WriteLine($"Rats killed: {RatsKilled}/3");
+        
+        if (World.QuestByID(World.QUEST_ID_CLEAR_FARMERS_FIELD).IsStarted)
+            Console.WriteLine($"Snakes killed: {SnakesKilled}/3");
+        
+        if (World.QuestByID(World.QUEST_ID_COLLECT_SPIDER_SILK).IsStarted)
+            Console.WriteLine($"Spiders killed: {SpidersKilled}/3");
     }
 }
