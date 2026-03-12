@@ -195,21 +195,10 @@ class Program
                                 break;
                             }
                         }
-                        Console.WriteLine("\nFight another monster? (Y/N)");
-                        string again = Console.ReadLine()!.ToUpper();
-
-                        if (again == "Y")
-                        {
-                            monster = World.MonsterByID(monster.ID);
-                            monster.CurrentHitPoints = monster.MaximumHitPoints;
-                            continue;
-                        }
-                        else
-                        {
-                            monster = World.MonsterByID(monster.ID);
-                            monster.CurrentHitPoints = monster.MaximumHitPoints;
-                            break;
-                        }
+                        
+                        monster = World.MonsterByID(monster.ID);
+                        monster.CurrentHitPoints = monster.MaximumHitPoints;
+                        continue;
                     }
                 }
                 else
